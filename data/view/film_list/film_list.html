@@ -1,0 +1,43 @@
+<!--Template-->
+<script type="text/ng-template" id="film_item">
+    <a href="{{::item.href}}">
+        <span ng-bind-html="::controller.bind_html(item.num_film)"></span>
+        <img data-tipped="$index % 4 < 2 ? film_list.tooltip_options_1 : film_list.tooltip_options_2"
+             title="{{::item.tooltip_value}}"
+             class="img-thumbnail img-responsive"
+             afkl-lazy-image-options='{"alt":"{{::item.alt}}","offset":100}' afkl-lazy-image="{{::item.src}}">
+
+        <p class="row bg-primary">
+            <strong class="text-ellipsis col-xs-12" tooltip="{{::item.en_name}}"
+                    ng-bind="::item.en_name ? item.en_name : '&nbsp;'"></strong>
+            <em class="text-ellipsis small col-xs-12" tooltip="{{::item.vn_name}}"
+                ng-bind="::item.vn_name ? item.vn_name : '&nbsp;'"></em>
+        </p>
+    </a>
+</script>
+<!--end Template-->
+<div id="html-movie-list" ng-controller="film_list">
+    <div class="clearfix" ng-controller="pagination">
+        <div class="hidden-xs col-sm-6" ng-include="'/gm_script/resource/view/film_list/search.html'"></div>
+        <div class="col-sm-6" ng-include="'/gm_script/resource/view/film_list/pagination.html'"></div>
+    </div>
+    <div id="film_list">
+        <ul class="nav nav-pills">
+            <li ng-repeat="tab in film_list.tab_list" ng-class="{'active':tab.active}">
+                <a style="cursor:pointer" ng-click="film_list.tab_select(tab)" ng-bind="::tab.name"></a>
+            </li>
+        </ul>
+        <div class="clearfix">
+            <div ng-repeat="item in film_list.list" class="film_item col-xs-6 col-sm-3">
+                <div class="film_item_content" ng-include="" src="'film_item'"></div>
+            </div>
+        </div>
+        <div ng-if="film_list.list.length <= 0 && film_list.tab_list.length <= 0">
+            <alert type="info" ng-bind="::'Hiện tại không có nội dung trong mục này.'"></alert>
+        </div>
+    </div>
+    <div class="clearfix" ng-controller="pagination">
+        <div class="hidden-xs col-sm-6"></div>
+        <div class="col-sm-6" ng-include="'/gm_script/resource/view/film_list/pagination.html'"></div>
+    </div>
+</div>

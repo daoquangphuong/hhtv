@@ -1,0 +1,16 @@
+<div id="comment-review" class="col-xs-12" ng-controller="comment">
+    <tabset ng-show="comment.show" type="pills">
+        <tab select="comment.tab_select()" ng-if="comment.comment">
+            <tab-heading><i class="fa fa-comment"></i> Comment</tab-heading>
+            <div class="tab-content-wrapper">
+                <div class="fb-comments" data-href="{{comment.comment}}" data-numposts="5" data-width="100%" data-colorscheme="light"></div>
+            </div>
+        </tab>
+        <tab select="comment.tab_select()" ng-if="comment.review">
+            <tab-heading><i class="fa fa-star"></i> Review</tab-heading>
+            <div class="tab-content-wrapper">
+                <div class="fb-comments" data-href="{{comment.review}}" data-numposts="5" data-width="100%" data-colorscheme="light"></div>
+            </div>
+        </tab>
+    </tabset>
+</div>

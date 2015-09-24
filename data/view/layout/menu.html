@@ -1,0 +1,114 @@
+<div ng-controller="menu_manage">
+    <div ng-show="menu_manage.menu_list" class="max-page-width">
+        <div class="navbar-header">
+            <span class="login pull-right visible-xs-inline-block" ng-controller="login">
+               <button ng-click="login.is_logged ? login.logout(): login.open_login_pop('sm')"
+                       class="btn btn-sm" ng-class="{'btn-danger':!login.is_logged,'btn-success':login.is_logged}">
+                   <span ng-show="login.is_logging_out" class="glyphicon glyphicon-refresh spinning"></span>
+                   <span ng-hide="login.is_logged" class="glyphicon glyphicon-user"></span>
+                   <span ng-show="!login.is_logging_out && login.is_logged" class="glyphicon glyphicon-log-out"></span>
+               </button>
+            </span>
+            <button ng-show="menu_manage.menu_list.length > 0" type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    ng-click="controller.isCollapsed = !controller.isCollapsed"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{controller.base_url}}/#/">
+                <img height="27"
+                     src="data:image/png;base64,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">
+            </a>
+            <button ng-click="menu_manage.hidden()" class="navbar-toggle button-hide-menu">
+                <span class="fa fa-angle-double-up fa-2x"></span>
+            </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse" collapse="!controller.isCollapsed">
+            <ul class="nav navbar-nav small">
+                <li ng-repeat-start="menu in menu_manage.menu_list" ng-if="false"></li>
+                <li ng-click="controller.isCollapsed = false" ng-if="menu.child.length <= 0">
+                    <a href="{{menu.href}}" ng-bind="menu.name"></a>
+                </li>
+                <li class="dropdown" dropdown="" ng-if="menu.child.length > 0">
+                    <a href="{{menu.href}}" class="dropdown-toggle" dropdown-toggle="">
+                        <span ng-bind="menu.name"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="child in menu.child" ng-click="controller.isCollapsed = false"
+                            ng-class="{'divider':child.divider}">
+                            <a href="{{child.href}}" ng-bind="child.name"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-repeat-end="" ng-if="false"></li>
+            </ul>
+            <script type="text/ng-template" id="hint.html">
+                <div class="list-group-item" ng-repeat="info in match.label.VOD">
+                    <a class="clearfix" href="{{info.link}}">
+                        <img class="col-xs-2 img-responsive clear-padding" ng-src="{{info.images}}">
+
+                        <div class="col-xs-10 small"><span
+                                bind-html-unsafe="info.name | typeaheadHighlight:query"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="list-group-item" ng-repeat="info in match.label.TAGS">
+                    <a class="clearfix" href="{{info.link}}">
+                        <div class="col-xs-2 clear-padding small"><span class="small">Tag</span></div>
+                        <div class="col-xs-10 small"><span
+                                bind-html-unsafe="info.name | typeaheadHighlight:query"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="list-group-item" ng-repeat="info in match.label.Director">
+                    <a class="clearfix" href="{{info.link}}">
+                        <div class="col-xs-2 clear-padding small"><span class="small">Đạo Diễn</span></div>
+                        <div class="col-xs-10 small"><span
+                                bind-html-unsafe="info.name | typeaheadHighlight:query"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="list-group-item" ng-repeat="info in match.label.Actors">
+                    <a class="clearfix" href="{{info.link}}">
+                        <div class="col-xs-2 clear-padding small"><span class="small">Diễn Viên</span></div>
+                        <div class="col-xs-10 small"><span
+                                bind-html-unsafe="info.name | typeaheadHighlight:query"></span>
+                        </div>
+                    </a>
+                </div>
+            </script>
+            <div class="login pull-right hidden-xs" ng-controller="login">
+                <button ng-click="login.is_logged ? login.logout(): login.open_login_pop('sm')"
+                        class="btn btn-sm" ng-class="{'btn-danger':!login.is_logged,'btn-success':login.is_logged}">
+                    <span ng-show="login.is_logging_out" class="glyphicon glyphicon-refresh spinning"></span>
+                    <span ng-hide="login.is_logged" class="glyphicon glyphicon-user"></span>
+                    <span ng-show="!login.is_logging_out && login.is_logged" class="glyphicon glyphicon-log-out"></span>
+                </button>
+            </div>
+            <form id="menu-search" class="col-xs-12 col-sm-5 pull-right" ng-submit="menu_manage.make_search()">
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        <input type="text" ng-model="menu_manage.search_value" class="form-control" autocomplete="off"
+                               id="exampleInputAmount"
+                               placeholder="Tìm kiếm: Phim, Đạo Diễn, Diễn Viên"
+                               typeahead="hint.key as hint.value for hint in menu_manage.get_search_hint($viewValue)"
+                               typeahead-loading="menu_search_loading"
+                               typeahead-template-url="hint.html"
+                               typeahead-wait-ms="100"
+                               typeahead-focus-first="false">
+                        <span class="input-group-btn"><button ng-click="menu_manage.make_search()" class="btn btn-info"><span
+                                ng-show="menu_search_loading" class="glyphicon glyphicon-refresh spinning"></span><span
+                                ng-hide="menu_search_loading">Search</span>
+                        </button></span>
+                    </div>
+                </div>
+            </form>
+            <div style="height: 10px;width: 100%;float: right" class="visible-xs-block"></div>
+        </div>
+    </div>
+</div>

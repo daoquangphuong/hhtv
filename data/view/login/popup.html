@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <button ng-hide="login.is_logging_on" ng-click="login.close_pop_up()" type="button" class="close"
+            data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">
+        <span class="glyphicon glyphicon-user"></span>
+        <span ng-hide="package.pk_edit">Đăng nhập</span>
+    </h4>
+</div>
+<div class="modal-body text-center" ng-show="login.FB_loaded">
+    <button id="FBLOGIN" ng-disabled="login.is_FB_logging" class="btn btn-sm btn-social btn-facebook"
+            onclick="jQuery(this).scope().login.is_FB_logging = true; FB.login(jQuery(this).scope().login.FBCallback,{scope: 'email,user_likes'})">
+        <i class="fa fa-facebook"></i><span ng-show="login.is_FB_logging" class="fa fa-spinner fa-spin"></span><span
+            ng-hide="login.is_FB_logging">Sign in with Facebook</span>
+    </button>
+</div>
+<div class="modal-body" ng-hide="login.FB_loaded">
+    <div role="alert" class="alert alert-danger" ng-show="login.status == 'error'">
+        <strong>Đăng nhập thất bại!</strong>
+    </div>
+    <form name="login.login_form">
+        <div class="form-group"
+             ng-class="{'has-error':login.login_form.email.$invalid && login.login_form.email.$dirty}">
+            <div class="input-group">
+                <label class="input-group-addon">Email</label>
+                <input ng-disabled="login.is_logging_on" name="email" type="text" ng-model="login.login_data.email"
+                       class="form-control" required="">
+            </div>
+        </div>
+        <div class="form-group"
+             ng-class="{'has-error':login.login_form.password.$invalid && login.login_form.password.$dirty}">
+            <div class="input-group">
+                <label class="input-group-addon">Pass&nbsp;</label>
+                <input ng-disabled="login.is_logging_on" name="password" type="password"
+                       ng-model="login.login_data.password" class="form-control"
+                       required="">
+            </div>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input ng-disabled="login.is_logging_on" name="remember_account" type="checkbox"
+                       ng-model="login.login_data.remember_account"
+                       ng-true-value="1" ng-false-value="0">Remember
+            </label>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="clearfix" ng-hide="login.FB_loaded">
+        <button ng-show="login.APPID && !login.FB_loaded" ng-disabled="login.is_logging_on"
+                ng-click="!login.social_facebook_logging && login.FBLogin()"
+                class="btn btn-sm btn-social-icon btn-facebook pull-left">
+            <i class="fa fa-facebook"></i>
+        </button>
+        <button ng-show="login.links_google" ng-disabled="login.is_logging_on"
+                ng-click="!login.social_facebook_logging && login.GGLogin()"
+                class="btn btn-sm btn-social-icon btn-google-plus pull-left">
+            <i class="fa fa-google-plus"></i>
+        </button>
+        <button ng-disabled="login.login_form.$invalid || login.is_logging_on" ng-click="login.submit()" type="button"
+                class="btn btn-sm btn-info">
+            <span ng-hide="login.is_logging_on">Submit</span>
+            <span ng-show="login.is_logging_on" class="glyphicon glyphicon-refresh spinning"></span>
+        </button>
+    </div>
+</div>

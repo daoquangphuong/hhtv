@@ -1,0 +1,26 @@
+<div ng-controller="player" class="clearfix">
+    <div id="player">
+        <img ng-hide="player.show_play_film" width="100%" height="auto" ng-src="{{player.info.background.src}}"
+             alt="{{player.info.background.alt}}">
+
+        <div id="player_wrapper" ng-show="player.show_play_film">
+            <div id="jw_player">
+
+            </div>
+        </div>
+        <div ng-hide="player.show_play_film" class="player_info_film row-inline" ng-html-compile="player.info.info">
+
+        </div>
+    </div>
+    <div id="episodes" class="col-xs-12">
+        <nav>
+            <ul class="pagination pagination-sm">
+                <li ng-show="false"></li>
+                <li ng-repeat="ep in player.episodes" class="" ng-class="{'active':ep.active}">
+                    <a href="javascript:void(0)" ng-click="player.open_episode(ep)"  ng-bind="ep.text"></a>
+                </li>
+                <li ng-show="false"></li>
+            </ul>
+        </nav>
+    </div>
+</div>

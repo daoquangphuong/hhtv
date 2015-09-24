@@ -1,0 +1,26 @@
+<div ng-show="pagination.cur_page > 0" class="pagi text-right">
+    <div class="hidden-xs btn-group-sm pagination" dropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+            <span ng-bind="'Trang ' + pagination.cur_page + '/' + pagination.total_page"></span> <span
+                class="caret"></span>
+        </button>
+        <div class="dropdown-menu row" role="menu" ng-click="$event.preventDefault(); $event.stopPropagation();">
+            <div class="input-group input-group-sm col-xs-10 col-xs-offset-1">
+                <input type="text" class="form-control" placeholder="Đến Trang" ng-model="pagination.go_page">
+                <span class="input-group-btn" ng-click="pagination.go_to_page()"> <button
+                        class="btn btn-default" type="button">Go!
+                </button> </span>
+            </div>
+        </div>
+    </div>
+    <pagination
+            class="pagination-sm btn-group"
+            boundary-links="true"
+            total-items="pagination.total_page"
+            items-per-page="1"
+            ng-model="pagination.cur_page"
+            ng-change="pagination.page_change()"
+            max-size="5"
+            direction-links="false"
+            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+</div>

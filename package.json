@@ -1,0 +1,13 @@
+{
+  "title": "HayHayTv",
+  "name": "hayhaytv",
+  "version": "2.0.0",
+  "description": "Remove Advertise",
+  "main": "index.js",
+  "author": "Dao Quang Phuong",
+  "engines": {
+    "firefox": ">=33.0a1",
+    "fennec": ">=33.0a1"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+<div ng-controller="carousel">
+    <div class="wrapper-carousel" ng-if="carousel.frame.length > 0">
+        <carousel interval="10000">
+            <slide ng-repeat="slide in carousel.frame" active="slide.active">
+                <img ng-if="!$first" ng-src-lazy="{{::slide.image}}" style="margin:auto;max-height: 480px">
+                <img ng-if="$first" ng-src="{{::slide.image}}" style="margin:auto;max-height: 480px">
+
+                <div class="carousel-caption" ng-bind-html="::controller.bind_html(slide.html)">
+                </div>
+            </slide>
+        </carousel>
+    </div>
+</div>

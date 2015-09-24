@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <button ng-click="player.close_pop_up()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">
+        <span class="glyphicon glyphicon-cog"></span>
+        <span ng-hide="package.pk_edit">Cấu Hình Server</span>
+    </h4>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+                <label for="host_config" class="input-group-addon text-primary" ng-bind="player.host.location"></label>
+                <input id="host_config" type="text" class="form-control" ng-model="player.host.ip" ng-change="player.set_host(player.host.ip,player.host.location)"/>
+                <span class="input-group-btn">
+                    <a class="btn btn-info" ng-click="player.set_host('Tự động','Tự động')" href="javascript:void(0);">Tự động</a>
+                </span>
+            </div>
+        </div>
+    </form>
+    <accordion close-others="true">
+        <accordion-group ng-repeat="server_location in player.server" is-open="server_location.is_open">
+            <accordion-heading>
+                <a href="javascript:void(0);" class="block">
+                    <span ng-bind="server_location.name"></span>
+                    <i class="pull-right glyphicon"
+                       ng-class="{'glyphicon-chevron-down': server_location.is_open, 'glyphicon-chevron-right': !server_location.is_open}"></i>
+                </a>
+            </accordion-heading>
+            <div class="list-group server_list">
+                <a ng-repeat="server_ip in server_location.list" href="javascript:void(0);"
+                   class=" list-group-item inline-block col-xs-6 col-sm-4 small clear-padding text-center"
+                   ng-click="server_location.is_open = false;player.set_host(server_ip,server_location.name)"
+                   ng-class="{'active':player.host.ip == server_ip}" ng-bind="server_ip"></a>
+            </div>
+        </accordion-group>
+    </accordion>
+</div>

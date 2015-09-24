@@ -1,0 +1,16 @@
+<form id="pagi-search" class="pagination" ng-controller="search" ng-show="search.select_list.length > 0">
+    <div class="col-sm-3 clear-margin form-group" ng-repeat="select in search.select_list">
+        <select name="type" class="form-control input-sm" id="type" ng-model="select.value"
+                ng-options="opt.value as opt.name for opt in select.option">
+        </select>
+    </div>
+    <div class="col-sm-1 clear-margin form-group btn-group-sm">
+        <button ng-click="search.make_sort()" type="button" class="btn btn-success"><span
+                class="glyphicon"
+                ng-class="{'glyphicon-triangle-bottom':search.sort == 'DESC','glyphicon-triangle-top':search.sort == 'ASC'}"></span>
+        </button>
+    </div>
+    <div class="col-sm-2 clear-margin form-group btn-group-sm">
+        <button ng-click="search.make_search()" type="button" class="btn btn-info">Search</button>
+    </div>
+</form>

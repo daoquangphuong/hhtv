@@ -1,0 +1,27 @@
+<div id="fake-top" class="fake-top" ng-hide="controller.menu_is_hidden">
+
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-hide="controller.menu_is_hidden">
+    <div ng-include="'/gm_script/resource/view/layout/menu.html'"></div>
+</nav>
+<div id="middle" class="container-fluid clear-padding well clear-margin">
+    <div class="div-show-menu">
+        <a ng-show="controller.menu_is_hidden" ng-click="menu_manage.show()"
+           class="navbar-toggle button-show-menu inline-block">
+            <span class="fa fa-angle-double-down fa-2x"></span>
+        </a>
+        <a ng-show="controller.menu_is_hidden" ng-click="menu_manage.scroll_to_top()"
+           class="navbar-toggle button-show-menu right inline-block">
+            <span class="fa fa-chevron-up fa-2x"></span>
+        </a>
+    </div>
+    <div id="carousel" class="max-page-width">
+        <div ng-include="'/gm_script/resource/view/layout/carousel.html'"></div>
+    </div>
+    <div id="content" class="max-page-width">
+        <ng-view></ng-view>
+    </div>
+</div>
+<footer class="bs-docs-footer">
+    <div ng-include="'/gm_script/resource/view/layout/footer.html'"></div>
+</footer>
