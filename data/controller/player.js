@@ -273,7 +273,7 @@
                     var jwplayerSetup = {
                         debug: true,
                         primary: "flash",
-                        flashplayer: main.baseUrl + "/jwplayer/jwplayer.flash.v10.swf",
+                        flashplayer: "http://static.hayhaytv.vn/jwplayer/jwplayer.flash.v12.swf",
                         hls_minbufferlength: 10,
                         hls_maxbufferlength: 300,
                         playlist: [playlist_obj],
@@ -290,7 +290,7 @@
                             windowOpacity: 0
                         },
                         plugins: {
-                            "http://www.hayhaytv.vn/jwplayer/swf/at-plugin.v16.swf": {
+                            "http://static.hayhaytv.vn/jwplayer/swf/at-plugin.v1.2.0.swf": {
                                 userid: '-1',
                                 ads_pause_url: adsXMLURL + '&ip=' + ipAdress,
                                 info_url: infoXMLUrl,
