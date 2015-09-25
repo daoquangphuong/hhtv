@@ -52,19 +52,19 @@
                         if (clear_cache) delete  _controller.page_cache[link_an_do];
                         if (_controller.page_cache[link_an_do]) {
                             var jqp = elem(_controller.page_cache[link_an_do]);
-                            load_ctrl(jqp, jq, jq);
+                            load_ctrl(jqp, jq, jq, res);
                             return;
                         }
                         $http.get(link_an_do)
                             .success(function (resp) {
                                 _controller.page_cache[link_an_do] = resp;
                                 var jqp = elem(resp);
-                                load_ctrl(jqp, jq, jq);
+                                load_ctrl(jqp, jq, jq, res);
                             });
                         return;
                     }
-                    load_ctrl(jq, jq, jq);
-                    function load_ctrl(jq_controller, jq_player, jq_comment) {
+                    load_ctrl(jq, jq, jq, res);
+                    function load_ctrl(jq_controller, jq_player, jq_comment, html) {
                         _controller.init(jq_controller);
                         _player.init(jq_player);
                         _comment.init(jq_comment);

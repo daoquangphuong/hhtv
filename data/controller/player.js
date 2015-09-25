@@ -181,7 +181,7 @@
                     href: _controller.route_href(a.attr('href')),
                     text: a.text()
                 }
-            })
+            });
         };
 
         _this.play_film = function (is_trailer) {
@@ -269,7 +269,8 @@
                 url: 'http://myip.hayhaytv.vn/ip.php',
                 dataType: "json", // data type of response
                 success: function (data) {
-                    ipAdress = data["ip"];
+                    //ipAdress = data["ip"];
+                    ipAdress = '14.175.26.190';
                     var jwplayerSetup = {
                         debug: true,
                         primary: "flash",
